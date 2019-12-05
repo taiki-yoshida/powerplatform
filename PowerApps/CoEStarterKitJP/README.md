@@ -1,104 +1,102 @@
-# Center of Excellence Starter Kit
-Get started with developing your Center of Excellence for PowerApps and Flow.
+# Center of Excellence スターターキット
+Power Apps と Power Automate の Center of Excellence を確立するための日本語キットです。
 
-### Updates
-Date | Notes
+### 更新情報
+日付 | 更新内容
 ---|---
-2019.06.09 | Initial release
-2019.06.17 | Updated documentation
-2019.06.20 | Fixed issues with connecting to CDS in Power BI dashboard
-2019.06.24 | Fixed issue with Flow reading null field value, updated PBI dashboard, removed Audit Log Sync template from solution (provided as package in download)
-2019.07.17 | Fixed issues with validation errors in Flow sync template (including modifications to PowerApps App / iconuri field and Flow / displayname field was not long enough). Addded DLP Editor direct download.
-2019.08.26 | Added Solution that does not contain canvas (no canvas apps), provided all canvas app import packages individually. Also added a new canvas app to replace PowerApps app owners.
-2019.09.30 | Major updates to Sync template: <br> - Split Sync Template Flow into 5 Flows, making it easier to read and modify: <br> 1. Admin &#124; Sync Template v2 - runs on a schedule and updates environments <br> 2. Admin &#124; Sync Template v2 (Apps) - runs when an environment is created/modified and gets App information, also updates record if Apps are deleted <br> 3. Admin &#124; Sync Template v2 (Flows) - runs when an environment is created/modified and gets Flow information, also updates record if Flows are deleted <br> 4. Admin &#124; Sync Template v2 (Connectors) - runs when an environment is created/modified and gets Connector information <br> 5. Admin &#124; Sync Template v2 (Custom Connector) - runs when an environment is created/modified and gets Custom Connector information <br> - Sync template errors: All Flows implement a Try/Catch/Error logic, and if they fail will send an email to the owner with a link to the workflow run instance. For that, when configuring the Flow owners will need to specify a Flow environment URL. We could look at making this a setting in the CoE kit when they're setting it up so they only have to specify it once. <br> Added 'deleted date' to the entity schema <br> - Power BI: Fixed issues with displaying Flow cities <br> - Model driven app (Power Platform Admin View): Removed 'New' button from all grids to prevent creation of data that's not synced with the Power Platform server
+2019.12.05 | 初版
 
-## Known Issues
-Currently no known issues.
+## 既知の問題
+現在発生している問題はありません。
 
-## Documentation
-View the [documentation](./Documentation.pdf) ([download](https://github.com/microsoft/powerapps-tools/raw/master/Administration/CoEStarterKit/Documentation.pdf))
+## 取り扱い方法
+手順書がありますが、現在英語のみで提供しております。更新までしばらくお待ちください。 [documentation](./Documentation.pdf) ([download](https://github.com/microsoft/powerapps-tools/raw/master/Administration/CoEStarterKit/Documentation.pdf))
 
-## Download Pack
-Directly download the entire solution and all additional components from [aka.ms/CoEStarterKitDownload](https://aka.ms/CoEStarterKitDownload)
+## キットのダウンロード
+すべてのソリューションとコンポーネントのダウンロードはこちらのURLからダウンロード可能です： [aka.ms/CoEStarterKitJPDownload](https://aka.ms/CoEStarterKitJPDownload)
 
-## Components
-Here is a list of all the components in the starter kit:
-### Solution-aware components
-These items are installed in the CDS solution 'Center Of Excellence'. You must install the solution to access these components.
-#### Common Data Service Entities
-Entity | Description 
+## コンポーネント
+スターターキットに含まれる内容は以下の通りです：
+### ソリューション管理型コンポーネント
+「Center Of Excellence」こちらは英語版のソリューションです。インストール時に必須のコンポーネントです。
+「Center Of Excellence JP」こちらは日本語化対応のソリューションです。インストール時に必須のコンポーネントです。
+#### Common Data Service エンティティ
+エンティティ名 | 説明 
 -|-
-Environments | Represents the Environment object, which contains PowerApps, Flows and Connectors. 
-PowerApps Apps | Represents a PowerApps App.
-Flows | Represents a Flow.
-Connectors | Represents a standard or custom connector.
-Connection References | Represents a connection used in a PowerApp or Flow.
-Makers | Represents a user who has created a PowerApp, Flow, Custom Connector or Environment.
-Audit Logs | Represents session details for PowerApps. 
-CoE Settings | Settings configurations live in a record here. Contains details for configuring the branding and support aspect of the solution.
+環境 | 環境オブジェクトの情報が含まれます。環境にはPower Appsアプリ、フロー、コネクション等が含まれます。
+Power Apps アプリ | Power Appsのアプリ情報
+フロー | Power Automate のフロー情報
+Power Apps コネクタ | スタンダードコネクタとカスタムコネクタの情報
+コネクション | Power AppsやPower Automateで実際に環境内で利用されているコネクタ
+作成者 | 環境、Power Apps、Power Automate、カスタムコネクタを作成したユーザー
+監査ログ | Power Apps のセッション情報（Microsoft 365 管理センターから取得した監査ログ情報）
+CoE 設定 | 本キットの構成情報が保管されます。ブランド設定などもここで行われます。
 
-#### Flows
-List of Flows that come with the solution.
+#### Power Automate フロー
+ソリューションに含まれるフローは以下の通りです。
 - ##### Admin | Sync Template (v1)
     "Uber" sync Flow that syncs resource data from the admin connectors to the CDS resource entities. 
-- ##### Admin | Sync Template (v2)
-    Runs on a schedule and updates environments
-- ##### Admin | Sync Template v2 (Apps)
-    Runs when an environment is created/modified and gets App information, also updates record if Apps are deleted
-- ##### Admin | Sync Template v2 (Flows)
-    Runs when an environment is created/modified and gets Flow information, also updates record if Flows are deleted
-- ##### Admin | Sync Template v2 (Connectors)
-    Runs when an environment is created/modified and gets Connector information
-- ##### Admin | Sync Template v2 (Custom Connector)
-    Runs when an environment is created/modified and gets Custom Connector information
+- ##### 管理者用 | 更新テンプレート (v2)
+    定期的に実行され、環境情報を取得します。他のテンプレートはこちらに依存するため、必須のフローです。
+- ##### 管理者用 | 更新テンプレート (アプリ)
+    環境情報が更新された場合に、アプリの情報を取得します。アプリが削除された場合に、削除されたことも記録されます。
+- ##### 管理者用 | 更新テンプレート (フロー)
+    環境情報が更新された場合に、フローの情報を取得します。フローが削除された場合に、削除されたことも記録されます。
+- ##### 管理者用 | 更新テンプレート (コネクター)
+    環境情報が更新された場合に、コネクターの情報を取得します。
+- ##### 管理者用 | 更新テンプレート (カスタムコネクター)
+    環境情報が更新された場合に、カスタムコネクターの情報を取得します。
 - ##### Admin | Sync Audit Logs
-    Uses the Office 365 Audit logs custom connector to write audit log data into the CDS Audit Log entity. This will generate a view of usage for PowerApps.
-- ##### Admin | Welcome Email
-    Sends an email to a user who creates a PowerApp, Flow, Custom Connector or Environment 
-- ##### Admin | Compliance detail request
-    Sends an email to users who have PowerApps apps in the tenant who are not compliant with specific thresholds:
-    - The app is shared with > 20 Users or at least 1 group and the business justification details have not been provided.
-    - The app has business justification details provided but has not been published in 60 days or is missing a description.
-    - The app has business justification details provided and has indicated high business impact, and has not submitted a mitigation plan to the attachments field.
+    Office 365 監査ログを取得するカスタムコネクタを利用し、CDSの監査ログエンティティへ記録します。これにより、Power Appsの利用状況が確認できるようになります。
+- ##### 管理者用 | ようこそメール
+    Power Apps、Power Automate、カスタムコネクタや環境を作成したユーザーへ「ようこそメール」を送信します。
+- ##### 管理用 | コンプライアンス詳細依頼
+    Power Apps アプリを作成したユーザーの中で、特定の閾値を超えるコンプライアンス違反を犯した場合にメールが送信されます。
+    - アプリが20人以上または、1グループへ共有され、利用用途が記載されていないアプリ。
+    - 60日以内に詳細が記載されておらず、アプリ発行日を60日以上になるアプリ。
+    - 利用用途が記載されているものの、詳細情報についてファイルが添付されていない場合。
     
-#### Canvas Apps
-- ##### Developer Compliance Center
-    This app is used in the PowerApps App Auditing Process, defined later in this document, as a tool for users to submit information to the center of excellence admins as business justification to stay in compliance. They can also use the app to update the description and re-publish, which are other ways to stay in compliance. 
-- ##### App Catalog
-    Canvas app that gives access to the entire organization to make apps more discoverable. Admins audit and validate certain apps which are graduated to the app catalog if the app is meant to be shared broadly.
-- ##### DLP Editor
-    Canvas app that reads and updates DLP policies while showing a list of apps that are affected by the policy configurations.
-- ##### PowerApps Admin - Set Owner
-    Standalone app that updates the canvas app owner and can also assign additional permissions to apps.
+#### キャンバスアプリ
+- ##### 開発者コンプライアンスセンター
+    このアプリはPower Apps の監査プロセスで利用されます。ユーザーはコンプライアンス違反にならないように、利用用途などを申請する仕組みが含まれています。アプリは説明の更新や、再発行機能が搭載されています。
+- ##### アプリカタログ
+    組織が確認できるアプリのカタログです。管理者やこのアプリを利用して、どのアプリがコンプライアンスを通過したかを確認することが可能になっています。
+- ##### DLP エディター
+    DLPポリシーを取得し、読み込むことが可能です。また、ポリシー変更により、影響を受けるアプリの一覧も確認することができます。
+- ##### アプリ所有者の割り当て
+    キャンバスアプリの所有者を変更したり、追加の権限を付与するためのアプリです。
+- ##### トレーニングイベント管理
+    トレーニングイベントの運営をサポートするためのアプリです。
+- ##### トレーニングイベント登録
+    従業員が参加したいトレーニングイベントを確認したり、参加登録が行えるモバイル用のアプリです。
  
-#### Model Driven App
-Power Platform Admin View. A model driven app that provides an interface used to navigate the items in the CDS custom entities. It provides access to views and forms for the custom entities in the solution.
-Business Process Flows
+#### モデル駆動型アプリ
+Power Platformの管理者ビューの機能です。キャンバスアプリの一覧や、フローの一覧などが一目でわかります。
 
-#### PowerApps App Approval BPF (Business Process Flow)
+#### Power Apps アプリ承認 BPF (業務プロセスフロー))
 This process helps the admin audit the PowerApps App audit process by providing a visual placeholder for the stage in the process they are currently on.
 
-#### Security Roles
-Role | Description
+#### セキュリティロール
+役割 | 説明
 -|-
-Power Platform Admin SR | Gives full access to create, read, write and delete operations on the custom entities.
-Power Platform Maker SR | Gives read and write access to the resource custom entities.
-Power Platform User SR | Gives read only access to the resources in the custom entities.
+Power Platform Admin SR | カスタムエンティティに対して、作成、読み込み、書き込み、削除が可能です。
+Power Platform Maker SR | カスタムエンティティに対して、読み込み、書き込みが可能です。
+Power Platform User SR | カスタムエンティティに対して、読み込みが可能です。
 
-### Non-Solution aware components
-The following components are seperate files that are located in the download pack, but are not installed when the CDS solution is installed.
+### ソリューション管理外のコンポーネント
+以下のコンポーネントに関しては、スターターキットに含まれるものの、ソリューションとしては管理されていません。
 
-#### Power BI Report
-Provides a wholistic view with visualizations and insights of data in the CDS entities: Environments, PowerApps Apps, Flows, Connectors, Connection References, Makers and Audit Logs.
+#### Power BI レポート
+環境、アプリ、フロー、コネクタ、コネクション、作成者、監査ログの情報が閲覧できます。
  
-#### Office 365 Logs Custom Connector
-The custom connector swagger definition for getting audit logs programmatically.
+#### Office 365 ログカスタムコネクタ
+監査ログを取得するためのカスタムコネクタ用のSwagger定義ファイルです。
 
 #### Flow: Sync Audit Logs
-This Flow comes as a package (.zip) and should be imported seperately from the solution.
+フローパッケージとしてインポートすることが可能です。
 
 #### Documentation
-The most updated details on the solution will always be published in the documentation file.
+未和訳のドキュメントです。
 
-## Support
-Questions, comments, concerns, or interest in contributing? Please post your feedback in the [Administering PowerApps community forum](https://powerusers.microsoft.com/t5/Administering-PowerApps/bd-p/Admin_PowerApps). 
+## サポート
+説明、コメント等につきましては、以下のURLからご確認ください。現在英語版のみサポートしております。[Power Apps コミュニティーフォーラム](https://powerusers.microsoft.com/t5/Administering-PowerApps/bd-p/Admin_PowerApps). 
