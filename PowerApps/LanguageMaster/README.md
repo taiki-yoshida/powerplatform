@@ -13,7 +13,7 @@ Yoshio Matsumoto - このアイデアを提供してくれました！
 現在発生している問題はありません。
 
 ## セットアップ方法
-1. ZIPファイルをダウンロードします。（ダウンロードしたZIPファイルの展開・解凍は不要です）
+1. ZIPファイルを[ダウンロード](https://github.com/taiki-yoshida/powerplatform/blob/master/PowerApps/LanguageMaster/LanguageMaster_1_0_0_0.zip)します。（ダウンロードしたZIPファイルの展開・解凍は不要です）
 2. make.powerapps.comへアクセスし、画面左側の「アプリ」を選択します。
 3. 「キャンバスアプリのインポート」をクリックします。
 4. 「アップロード」をクリックし、手順１でダウンロードしたZIPファイルを選択します。
