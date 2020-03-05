@@ -14,7 +14,7 @@
 - 情報の収集と問題解決にあたっての集中対策本部を設立するためのTeamsチームの作成方法
 
 ## ダウンロード
-[こちらから](https://github.com/microsoft/powerapps-tools/raw/master/Apps/CrisisCommunication/CrisisCommunicationPackage.zip)入手いただけます。
+[こちらから](https://github.com/taiki-yoshida/powerplatform/blob/master/PowerApps/CrisisCommunicationJP/CrisisCommunicationJP.zip)入手いただけます。
 
 ## 更新情報
 日付（日本時間） | 備考
