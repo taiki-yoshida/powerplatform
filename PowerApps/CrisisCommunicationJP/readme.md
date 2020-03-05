@@ -15,6 +15,7 @@
 
 ## ダウンロード
 [こちらから](https://github.com/taiki-yoshida/powerplatform/raw/master/PowerApps/CrisisCommunicationJP/CrisisCommunicationJP.zip)入手いただけます。
+ZIPファイルを展開後、中に含まれるZIPファイルは、解凍しないでください。
 
 ## 更新情報
 日付（日本時間） | 備考
